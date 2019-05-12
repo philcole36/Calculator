@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.StringTokenizer;
-
 public class MainActivity extends AppCompatActivity {
+
+    Calculation cal = new Calculation();
+    double ans = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,11 +155,8 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StringTokenizer multiToken = new StringTokenizer(input.getText().toString());
-                while (multiToken.hasMoreTokens())
-                {
-                    System.out.println(multiToken.nextToken());
-                }
+               ans = cal.eval(input.getText().toString());
+               input.setText( String.valueOf( ans ) );
             }
         });
     }
